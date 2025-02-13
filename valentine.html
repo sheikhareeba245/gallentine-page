@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Bestie 💖</title>
+    <style>
+        body {
+            background-color: #ffe6f2;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            text-align: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+        }
+
+        .message {
+            font-size: 24px;
+            color: black;
+            background: #ff4081;
+            padding: 15px;
+            border-radius: 10px;
+            display: inline-block;
+            margin-top: 20px;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        .heart {
+            position: absolute;
+            font-size: 30px;
+            color: red;
+            animation: floatUp 4s infinite ease-in-out;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(0) scale(1); opacity: 1; }
+            100% { transform: translateY(-100vh) scale(1.5); opacity: 0; }
+        }
+
+        .cartoon-img {
+            width: 150px;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            border-radius: 10px;
+        }
+
+        .foodie {
+            width: 100px;
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: foodieBounce 2s infinite;
+        }
+
+        @keyframes foodieBounce {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0); }
+        }
+
+        /* GALENTINE POP-UP */
+        .popup-container {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #ff4081;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            display: none;
+            animation: pop 0.5s ease-in-out;
+        }
+
+        @keyframes pop {
+            0% { transform: translate(-50%, -50%) scale(0); opacity: 0; }
+            100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+        }
+
+        .popup-container button {
+            background: white;
+            color: #ff4081;
+            border: none;
+            padding: 10px;
+            margin-top: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        /* POPPER EFFECT */
+        .popper {
+            font-size: 30px;
+            position: absolute;
+            animation: popperEffect 3s infinite;
+        }
+
+        @keyframes popperEffect {
+            0% { transform: translateY(0) scale(1); opacity: 1; }
+            100% { transform: translateY(-100px) scale(1.5); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>💖 My Bestie, This is for You! 💖</h1>
+        <span class="cute-animation">🐰💕</span>
+        <p class="message">"دوستی وہ تحفہ ہے جو ہمیشہ خاص ہوتا ہے! تم میری سب سے خاص دوست ہو 💖✨"</p>
+        
+        <img src="c:\Users\LENOVO\Downloads\spongebob patrick.jpeg" class="cartoon-img" alt="Cute Cartoon">
+
+        <p class="message">"وہ مجھے میرا چاند لگتی ہے، میری زندگی اُس کے بغیر ادھوری لگتی ہے۔ 🌙"</p>
+        
+        <button class="music-control" onclick="toggleMusic()">🎵 Play/Pause Lover</button>
+        <audio id="bg-music" loop>
+            <source src="c:\Users\LENOVO\Downloads\Music\aur-humsafar-official-visualizer-128-ytshorts.savetube.me.mp3" type="audio/mpeg">
+        </audio>
+        
+        <img src="c:\Users\LENOVO\Downloads\download.jpeg" class="foodie" alt="Food Love">
+        
+        <!-- GALENTINE POP-UP BOX -->
+        <div class="popup-container" id="popup">
+            <h2>💌 Hey my pretty woman! 💌</h2>
+            <p>Will you be my Galentine? 💕✨</p>
+            <button onclick="galentineYes()">Yes! 💖</button>
+            <button onclick="galentineOfCourse()">Of course! 😘</button>
+        </div>
+    </div>
+    
+    <script>
+        function createHeart() {
+            const heart = document.createElement("div");
+            heart.innerHTML = "❤️";
+            heart.classList.add("heart");
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.animationDuration = Math.random() * 3 + 2 + "s";
+            document.body.appendChild(heart);
+            
+            setTimeout(() => { heart.remove(); }, 5000);
+        }
+        setInterval(createHeart, 500);
+
+        let audio = document.getElementById("bg-music");
+        function toggleMusic() {
+            if (audio.paused) {
+                audio.play();
+            } else {
+                audio.pause();
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            setTimeout(() => { audio.play(); }, 2000);
+        });
+
+        // GALENTINE POP-UP FUNCTION
+        function showPopup() {
+            document.getElementById("popup").style.display = "block";
+        }
+        
+        function galentineYes() {
+            document.getElementById("popup").innerHTML = "<h2>💖 Yay! Bestie Forever! 💖</h2><p>You're my favorite person! 💕</p>";
+            setTimeout(() => { document.getElementById("popup").style.display = "none"; }, 3000);
+        }
+
+        function galentineOfCourse() {
+            document.getElementById("popup").innerHTML = "<h2>😘 Love youuuu! 😘</h2><p>Let's celebrate with chocolates! 🍫🎉</p>";
+            setTimeout(() => { document.getElementById("popup").style.display = "none"; }, 3000);
+        }
+
+        // SHOW POP-UP AFTER 5 SECONDS
+        setTimeout(showPopup, 5000);
+    </script>
+</body>
+</html>
